@@ -5,20 +5,26 @@ class MyMatrix
     @matrix_size_char = @matrix_string.size
   end
   
+  #Busca cual es la dimensión más profunda a partir de los corchetes abiertos y cerrados que están en mayor profundidad
   def dimension
     count = 0
     dimension = 0 
+    max = 0
     while count < @matrix_size_char
         if @matrix_string[count] == "["
           dimension += 1
-        end
-        if @matrix_string[count] == "]"
-          break
+        elsif @matrix_string[count] == "]"
+          if max < dimension
+            max = dimension
+          end
+          dimension -= 1
         end
         count += 1
       end
-    dimension
+    max
   end
+
+  #En escencia una matriz es un vector dentro de otro, lo que se hace es buscar que cantidad de vectores están en las matrices internas, dividirlos en grupos y compararlos, de encontrarse con sub matrices de diferentes tamaños arrojará un false
 
   def straight
     count = 1
@@ -44,6 +50,8 @@ class MyMatrix
     end
   end
 
+
+  #Compara caracteres y si son diferentes de corchetes, comas o espacios, los suma 
   def compute
     count = 0
     sum = 0

@@ -3,6 +3,7 @@ class MyArray
     @str = str
   end
   
+  #Primero se comprueba que la cadena de texto no esté compuesta por letras, posteriormente se comprueba que se encuentra el mismo número de parentesis que abren a los que cierran y finalmente se verifica que la operación matemática tenga una estructura compatible
   def operation
     par_open = /\(/
     par_close = /\)/
@@ -25,6 +26,7 @@ class MyArray
     end
   end
 
+  #se comprueba mediante el metodo 'operation' si la cadena de texto es compatible y de ser así se evalúa la operación con la función eval()
   def compute
     if operation
       eval(@str)
